@@ -88,8 +88,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors mb-0.5 ${
                   active
-                    ? 'bg-sky-400/10 text-sky-400 font-medium'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
+                    ? 'bg-sky-400/10 text-sky-400 font-semibold'
+                    : 'text-gray-100 hover:text-white hover:bg-slate-700/50'
                 }`}
               >
                 <item.icon className="w-4 h-4 flex-shrink-0" />
@@ -137,7 +137,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <ChevronDown className="w-3 h-3" />
             </button>
             {facilityOpen && (
-              <div className="absolute top-full mt-1 right-0 w-60 bg-slate-800 border border-slate-700 rounded-lg shadow-xl z-50 py-1">
+              <div className="absolute top-full mt-1 right-0 w-60 bg-slate-800 border border-slate-600 rounded-lg shadow-2xl z-[100] py-1 ring-1 ring-black/20">
                 {facilityOptions.map((f) => (
                   <button key={f} onClick={() => { setFacility(f); setFacilityOpen(false); }} className={`w-full text-left px-3 py-2 text-sm transition-colors ${currentFacility === f ? 'text-sky-400 bg-sky-400/10' : 'text-slate-300 hover:bg-slate-700/50'}`}>
                     {f}
@@ -176,7 +176,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <span className="hidden sm:inline">Quick Actions</span>
             </button>
             {quickActionsOpen && (
-              <div className="absolute top-full mt-1 right-0 w-56 bg-slate-800 border border-slate-700 rounded-lg shadow-xl z-50 py-1">
+              <div className="absolute top-full mt-1 right-0 w-56 bg-slate-800 border border-slate-600 rounded-lg shadow-2xl z-[100] py-1 ring-1 ring-black/20">
                 {quickActions.map((a) => (
                   <button key={a.label} onClick={() => setQuickActionsOpen(false)} className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/50 hover:text-white transition">
                     <a.icon className="w-4 h-4 text-slate-400" />
@@ -200,7 +200,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Click outside to close dropdowns */}
       {(quickActionsOpen || facilityOpen) && (
-        <div className="fixed inset-0 z-30" onClick={() => { setQuickActionsOpen(false); setFacilityOpen(false); }} />
+        <div className="fixed inset-0 z-[90]" onClick={() => { setQuickActionsOpen(false); setFacilityOpen(false); }} />
       )}
     </div>
   );

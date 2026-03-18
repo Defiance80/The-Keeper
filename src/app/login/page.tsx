@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStore } from '@/store';
-import { Shield, Lock, Eye, EyeOff } from 'lucide-react';
+import { Lock, Eye, EyeOff } from 'lucide-react';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -33,9 +33,12 @@ export default function LoginPage() {
           {/* Logo */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-400/10 rounded-2xl mb-4">
-              <Shield className="w-8 h-8 text-sky-400" />
+              <svg viewBox="0 0 64 64" className="w-10 h-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 4L8 16v16c0 14.4 10.24 27.84 24 32 13.76-4.16 24-17.6 24-32V16L32 4z" fill="rgba(56,189,248,0.15)" stroke="rgb(56,189,248)" strokeWidth="2.5" strokeLinejoin="round"/>
+                <path d="M32 22a4 4 0 0 0-4 4v4h-2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V32a2 2 0 0 0-2-2h-2v-4a4 4 0 0 0-4-4zm0 3a1 1 0 0 1 1 1v4h-2v-4a1 1 0 0 1 1-1zm0 11a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="rgb(56,189,248)"/>
+              </svg>
             </div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">The Keeper</h1>
+            <h1 className="text-3xl font-bold text-white tracking-tight">The Keeper AFB</h1>
             <p className="text-slate-400 text-sm mt-2">Moody AFB 23 FSS Recreation Operations & POS Management</p>
           </div>
 
@@ -82,15 +85,15 @@ export default function LoginPage() {
           <div className="mt-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/50">
             <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Demo Credentials</p>
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
+              <button onClick={() => { setEmail('admin@thekeeper.mil-demo'); setPassword('Moody23Demo!'); }} className="flex justify-between w-full text-left hover:bg-slate-800/50 rounded px-2 py-1 -mx-2 transition-colors group cursor-pointer">
                 <span className="text-slate-400">Admin:</span>
-                <span className="text-slate-300 font-mono text-xs">admin@thekeeper.mil-demo</span>
-              </div>
-              <div className="flex justify-between">
+                <span className="text-slate-300 font-mono text-xs group-hover:text-sky-400 transition-colors">admin@thekeeper.mil-demo <span className="text-[10px] text-sky-400/60">· click to fill</span></span>
+              </button>
+              <button onClick={() => { setEmail('staff@thekeeper.mil-demo'); setPassword('Moody23Demo!'); }} className="flex justify-between w-full text-left hover:bg-slate-800/50 rounded px-2 py-1 -mx-2 transition-colors group cursor-pointer">
                 <span className="text-slate-400">Staff:</span>
-                <span className="text-slate-300 font-mono text-xs">staff@thekeeper.mil-demo</span>
-              </div>
-              <div className="flex justify-between">
+                <span className="text-slate-300 font-mono text-xs group-hover:text-sky-400 transition-colors">staff@thekeeper.mil-demo <span className="text-[10px] text-sky-400/60">· click to fill</span></span>
+              </button>
+              <div className="flex justify-between px-2 -mx-2">
                 <span className="text-slate-400">Password:</span>
                 <span className="text-slate-300 font-mono text-xs">Moody23Demo!</span>
               </div>
