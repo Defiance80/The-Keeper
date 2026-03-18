@@ -67,8 +67,8 @@ export default function POSPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 flex-1 min-h-0">
 
         {/* LEFT PANEL — Product Browsing */}
-        <div className="lg:col-span-4 bg-slate-800/60 border border-slate-700/50 rounded-xl flex flex-col overflow-hidden">
-          <div className="px-4 py-3 border-b border-slate-700/30 flex items-center gap-2">
+        <div className="lg:col-span-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl flex flex-col overflow-hidden">
+          <div className="px-4 py-3 border-b border-slate-700/30 bg-gradient-to-r from-slate-700/30 to-transparent flex items-center gap-2">
             <Search className="w-4 h-4 text-sky-400" />
             <h3 className="text-sm font-semibold text-white">Browse Items</h3>
           </div>
@@ -97,7 +97,7 @@ export default function POSPage() {
                 <button
                   key={item.id}
                   onClick={() => addToCart({ id: item.id, name: item.name, category: item.category, price: item.price })}
-                  className="bg-slate-900/40 border border-slate-700/30 rounded-lg p-3 text-left hover:border-sky-400/30 hover:bg-slate-800/80 transition-all group"
+                  className="bg-slate-900/40 border border-slate-700/30 rounded-lg p-3 text-left hover:border-sky-400/30 hover:bg-slate-800/80 hover:shadow-lg hover:shadow-sky-400/5 transition-all group"
                 >
                   <p className="text-xs font-medium text-white line-clamp-2 mb-2 group-hover:text-sky-300 transition-colors">{item.name}</p>
                   <div className="flex items-center justify-between">
@@ -111,8 +111,8 @@ export default function POSPage() {
         </div>
 
         {/* CENTER PANEL — Cart */}
-        <div className="lg:col-span-4 bg-slate-800/60 border border-slate-700/50 rounded-xl flex flex-col overflow-hidden">
-          <div className="px-4 py-3 border-b border-slate-700/30 flex items-center justify-between">
+        <div className="lg:col-span-4 bg-gradient-to-br from-slate-800/70 to-slate-850/50 backdrop-blur-sm border border-slate-700/50 rounded-xl flex flex-col overflow-hidden">
+          <div className="px-4 py-3 border-b border-slate-700/30 bg-gradient-to-r from-slate-700/30 to-transparent flex items-center justify-between">
             <div className="flex items-center gap-2">
               <ShoppingCart className="w-4 h-4 text-sky-400" />
               <h3 className="text-sm font-semibold text-white">Cart</h3>
@@ -174,8 +174,8 @@ export default function POSPage() {
         {/* RIGHT PANEL — Payment & Customer */}
         <div className="lg:col-span-4 flex flex-col gap-3 min-h-0">
           {/* Customer */}
-          <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl flex-shrink-0">
-            <div className="px-4 py-3 border-b border-slate-700/30 flex items-center gap-2">
+          <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl flex-shrink-0">
+            <div className="px-4 py-3 border-b border-slate-700/30 bg-gradient-to-r from-slate-700/30 to-transparent flex items-center gap-2">
               <User className="w-4 h-4 text-sky-400" />
               <h3 className="text-sm font-semibold text-white">Customer</h3>
             </div>
@@ -191,8 +191,8 @@ export default function POSPage() {
           </div>
 
           {/* Payment Method */}
-          <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl flex-1 flex flex-col overflow-hidden">
-            <div className="px-4 py-3 border-b border-slate-700/30 flex items-center gap-2">
+          <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 border-t-2 border-t-sky-400/50 rounded-xl flex-1 flex flex-col overflow-hidden">
+            <div className="px-4 py-3 border-b border-slate-700/30 bg-gradient-to-r from-slate-700/30 to-transparent flex items-center gap-2">
               <Wallet className="w-4 h-4 text-sky-400" />
               <h3 className="text-sm font-semibold text-white">Payment</h3>
             </div>
@@ -228,7 +228,7 @@ export default function POSPage() {
               <div className="flex-1" />
 
               {/* Complete Sale */}
-              <button className="w-full bg-sky-500 hover:bg-sky-400 text-white font-semibold py-3.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20">
+              <button className="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white font-semibold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20">
                 <CreditCard className="w-4 h-4" />
                 Complete Sale — ${total.toFixed(2)}
               </button>
@@ -238,7 +238,7 @@ export default function POSPage() {
       </div>
 
       {/* Device Status Strip — full width bottom */}
-      <div className="mt-4 flex-shrink-0 bg-slate-800/60 border border-slate-700/50 rounded-xl px-4 py-2.5">
+      <div className="mt-4 flex-shrink-0 bg-gradient-to-r from-slate-800/60 to-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2.5">
         <div className="flex items-center gap-6 flex-wrap">
           <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Devices</span>
           {devices.map((d) => (

@@ -26,6 +26,15 @@ const colorMap: Record<string, string> = {
   green: 'bg-green-400/10 text-green-400',
 };
 
+const topBorderMap: Record<string, string> = {
+  sky: 'border-t-sky-400',
+  emerald: 'border-t-emerald-400',
+  violet: 'border-t-violet-400',
+  amber: 'border-t-amber-400',
+  cyan: 'border-t-cyan-400',
+  green: 'border-t-green-400',
+};
+
 const opsSnapshot = [
   { label: 'Open POS Sessions', value: '4', icon: ShoppingCart, status: 'active' },
   { label: 'Pending Approvals', value: '3', icon: Clock, status: 'warning' },
@@ -55,13 +64,13 @@ export default function DashboardPage() {
       {/* Hero Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
         {heroCards.map((card) => (
-          <div key={card.label} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4 hover:border-slate-600/50 transition-colors">
+          <div key={card.label} className={`bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 border-t-2 ${topBorderMap[card.color]} rounded-xl p-4 hover:border-slate-600/50 transition-colors`}>
             <div className="flex items-center gap-2 mb-2">
               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${colorMap[card.color]}`}>
                 <card.icon className="w-4 h-4" />
               </div>
             </div>
-            <p className="text-2xl font-bold text-white">{card.value}</p>
+            <p className="text-2xl font-extrabold text-white tracking-tight">{card.value}</p>
             <p className="text-xs text-slate-400 mt-1">{card.label}</p>
           </div>
         ))}
@@ -87,7 +96,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Ops Snapshot */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
         <h3 className="text-sm font-semibold text-slate-300 mb-3">Operations Snapshot</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {opsSnapshot.map((op) => (
@@ -103,7 +112,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Facility Utilization */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
         <h3 className="text-sm font-semibold text-slate-300 mb-3">Facility Utilization</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {facilities.map((f) => (
@@ -130,7 +139,7 @@ export default function DashboardPage() {
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Revenue by Facility */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-4">Revenue by Facility</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -146,7 +155,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Weekly Trend */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-4">Registrations vs Walk-Ins (This Week)</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -166,7 +175,7 @@ export default function DashboardPage() {
       {/* Smart Alerts & Activity Feed */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Smart Alerts */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 text-amber-400" />
             Smart Alerts
@@ -204,11 +213,11 @@ export default function DashboardPage() {
         </div>
 
         {/* Live Activity Feed */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-3">Live Activity Feed</h3>
           <div className="space-y-1 max-h-80 overflow-y-auto">
             {activityFeed.map((item, i) => (
-              <div key={i} className="flex items-start gap-3 py-2 border-b border-slate-700/30 last:border-0">
+              <div key={i} className={`flex items-start gap-3 py-2 border-b border-slate-700/30 last:border-0 border-l-2 pl-3 ${item.type === 'alert' ? 'border-l-amber-400' : item.type === 'registration' ? 'border-l-emerald-400' : item.type === 'reservation' ? 'border-l-violet-400' : 'border-l-sky-400'}`}>
                 <span className="text-[11px] text-slate-500 font-mono w-10 flex-shrink-0 pt-0.5">{item.time}</span>
                 <div className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${item.type === 'alert' ? 'bg-amber-400' : item.type === 'registration' ? 'bg-emerald-400' : item.type === 'reservation' ? 'bg-violet-400' : 'bg-sky-400'}`} />
                 <p className="text-sm text-slate-300">{item.text}</p>

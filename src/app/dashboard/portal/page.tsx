@@ -38,7 +38,7 @@ export default function PortalPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {portalStats.map((s) => (
-          <div key={s.label} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+          <div key={s.label} className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${colorMap[s.color]}`}>
               <s.icon className="w-4 h-4" />
             </div>
@@ -52,7 +52,7 @@ export default function PortalPage() {
         {/* Activity Feed */}
         <div className="space-y-4">
           {/* Queue */}
-          <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+          <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
             <h3 className="text-sm font-semibold text-slate-300 mb-3">Online Activity Queue</h3>
             <div className="space-y-2">
               {portalActivity.map((item) => (
@@ -79,7 +79,7 @@ export default function PortalPage() {
           </div>
 
           {/* Abandoned */}
-          <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+          <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
             <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-amber-400" /> Abandoned Registrations
             </h3>
@@ -96,7 +96,7 @@ export default function PortalPage() {
           </div>
 
           {/* Chart */}
-          <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+          <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
             <h3 className="text-sm font-semibold text-slate-300 mb-4">Web Activity by Program</h3>
             <div className="h-56">
               <ResponsiveContainer width="100%" height="100%">
@@ -114,7 +114,7 @@ export default function PortalPage() {
         </div>
 
         {/* Mini Portal Preview */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
             <Globe className="w-4 h-4 text-sky-400" /> Public Portal Preview
           </h3>

@@ -52,7 +52,7 @@ export default function ProgramsPage() {
           <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)} className="bg-slate-800 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-slate-300 outline-none">
             {categories.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
-          <button onClick={() => setShowCreate(true)} className="bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors">
+          <button onClick={() => setShowCreate(true)} className="bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white text-sm font-medium px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors">
             <Plus className="w-4 h-4" /> Add Program
           </button>
         </div>
@@ -64,7 +64,7 @@ export default function ProgramsPage() {
           const fillPct = Math.round((p.enrolled / p.capacity) * 100);
           const isFull = p.enrolled >= p.capacity;
           return (
-            <div key={p.id} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4 hover:border-slate-600/50 transition-colors cursor-pointer" onClick={() => setSelectedProgram(p)}>
+            <div key={p.id} className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 hover:border-slate-600/50 transition-colors cursor-pointer" onClick={() => setSelectedProgram(p)}>
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <h3 className="text-sm font-semibold text-white">{p.name}</h3>
@@ -205,7 +205,7 @@ export default function ProgramsPage() {
                     <input type={field.type === 'date' ? 'date' : 'text'} placeholder={field.placeholder} className="w-full bg-slate-900/50 border border-slate-700/50 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-sky-400/50" />
                   </div>
                 ))}
-                <button className="w-full bg-sky-500 hover:bg-sky-400 text-white font-medium py-2.5 rounded-lg transition-colors text-sm">
+                <button className="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white font-medium py-2.5 rounded-lg transition-colors text-sm">
                   Create Program
                 </button>
               </div>

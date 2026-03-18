@@ -75,7 +75,7 @@ export default function FacilitiesPage() {
       </div>
 
       {/* Calendar */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl overflow-hidden">
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden">
         <div className="flex items-center justify-between p-3 border-b border-slate-700/50">
           <button className="text-slate-400 hover:text-white"><ChevronLeft className="w-5 h-5" /></button>
           <span className="text-sm font-medium text-white">March 16 – 22, 2026</span>
@@ -125,7 +125,7 @@ export default function FacilitiesPage() {
       {/* Bottom panels */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Reservation Request Inbox */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-3">Reservation Request Inbox</h3>
           <div className="space-y-3">
             {pendingRequests.map((req) => (
@@ -158,7 +158,7 @@ export default function FacilitiesPage() {
         </div>
 
         {/* Online Request Preview */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
             <Globe className="w-4 h-4 text-sky-400" /> Online Portal Request Preview
           </h3>

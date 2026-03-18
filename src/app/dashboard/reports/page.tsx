@@ -78,7 +78,7 @@ export default function ReportsPage() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-4">Peak Usage Times — Visitors by Hour</h3>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
@@ -93,7 +93,7 @@ export default function ReportsPage() {
           </div>
         </div>
 
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-4">Weekly Revenue Trend</h3>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
@@ -110,7 +110,7 @@ export default function ReportsPage() {
       </div>
 
       {/* Scheduled Reports Card */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
         <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-2">
           <Calendar className="w-4 h-4 text-sky-400" /> Scheduled Reports
         </h3>

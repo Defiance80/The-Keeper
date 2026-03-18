@@ -145,7 +145,7 @@ export default function CustomersPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl overflow-hidden">
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>

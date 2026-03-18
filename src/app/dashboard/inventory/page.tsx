@@ -37,22 +37,22 @@ export default function InventoryPage() {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <Package className="w-5 h-5 text-sky-400 mb-2" />
           <p className="text-2xl font-bold text-white">{inventoryItems.length}</p>
           <p className="text-xs text-slate-400">Total SKUs</p>
         </div>
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <AlertTriangle className="w-5 h-5 text-red-400 mb-2" />
           <p className="text-2xl font-bold text-red-400">{lowStockCount}</p>
           <p className="text-xs text-slate-400">Low Stock</p>
         </div>
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <TrendingUp className="w-5 h-5 text-green-400 mb-2" />
           <p className="text-2xl font-bold text-white">5</p>
           <p className="text-xs text-slate-400">High Sell-Through</p>
         </div>
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <Package className="w-5 h-5 text-amber-400 mb-2" />
           <p className="text-2xl font-bold text-white">337</p>
           <p className="text-xs text-slate-400">Total Units</p>
@@ -60,7 +60,7 @@ export default function InventoryPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl overflow-hidden">
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>

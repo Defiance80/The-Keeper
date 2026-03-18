@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useStore } from '@/store';
@@ -41,6 +41,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [quickActionsOpen, setQuickActionsOpen] = useState(false);
   const [facilityOpen, setFacilityOpen] = useState(false);
   const [now, setNow] = useState(new Date());
+  const [facilityBtnRect, setFacilityBtnRect] = useState<DOMRect | null>(null);
+  const facilityBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!user) router.push('/login');
@@ -59,14 +61,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!user) return null;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-900">
+    <div className="flex h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950">
       {/* Sidebar Overlay */}
       {sidebarOpen && (
         <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} />
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-slate-800/95 backdrop-blur-sm border-r border-slate-700/50 flex flex-col transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0 lg:w-64'}`}>
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-slate-800 to-slate-850 backdrop-blur-sm border-r border-slate-700/50 flex flex-col transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0 lg:w-64'}`}>
         <div className="p-4 border-b border-slate-700/50">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 bg-sky-400/10 rounded-lg flex items-center justify-center">
@@ -88,8 +90,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors mb-0.5 ${
                   active
-                    ? 'bg-sky-400/10 text-sky-400 font-semibold'
-                    : 'text-gray-100 hover:text-white hover:bg-slate-700/50'
+                    ? 'bg-sky-400/10 text-sky-400 font-semibold border-l-[3px] border-l-sky-400'
+                    : 'text-gray-100 hover:text-white hover:bg-slate-700/50 border-l-[3px] border-l-transparent'
                 }`}
               >
                 <item.icon className="w-4 h-4 flex-shrink-0" />
@@ -130,21 +132,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
 
           {/* Facility Selector */}
-          <div className="relative hidden md:block">
-            <button onClick={() => setFacilityOpen(!facilityOpen)} className="flex items-center gap-2 bg-slate-900/50 border border-slate-700/50 rounded-lg px-3 py-1.5 text-sm text-slate-300 hover:text-white transition">
+          <div className="hidden md:block">
+            <button ref={facilityBtnRef} onClick={() => { setFacilityOpen(!facilityOpen); if (facilityBtnRef.current) setFacilityBtnRect(facilityBtnRef.current.getBoundingClientRect()); }} className="flex items-center gap-2 bg-slate-900/50 border border-slate-700/50 rounded-lg px-3 py-1.5 text-sm text-slate-300 hover:text-white transition">
               <Building2 className="w-4 h-4" />
               <span className="truncate max-w-[140px]">{currentFacility}</span>
               <ChevronDown className="w-3 h-3" />
             </button>
-            {facilityOpen && (
-              <div className="absolute top-full mt-1 right-0 w-60 bg-slate-800 border border-slate-600 rounded-lg shadow-2xl z-[100] py-1 ring-1 ring-black/20">
-                {facilityOptions.map((f) => (
-                  <button key={f} onClick={() => { setFacility(f); setFacilityOpen(false); }} className={`w-full text-left px-3 py-2 text-sm transition-colors ${currentFacility === f ? 'text-sky-400 bg-sky-400/10' : 'text-slate-300 hover:bg-slate-700/50'}`}>
-                    {f}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
 
           <div className="flex-1" />
@@ -171,7 +164,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
           {/* Quick Actions */}
           <div className="relative">
-            <button onClick={() => setQuickActionsOpen(!quickActionsOpen)} className="flex items-center gap-1.5 bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium px-3 py-1.5 rounded-lg transition-colors">
+            <button onClick={() => setQuickActionsOpen(!quickActionsOpen)} className="flex items-center gap-1.5 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white text-sm font-medium px-3 py-1.5 rounded-lg transition-all">
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">Quick Actions</span>
             </button>
@@ -189,7 +182,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-6">
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-gradient-to-b from-transparent to-slate-950/30">
           {children}
           {/* Footer */}
           <footer className="mt-8 pt-4 border-t border-slate-700/30 text-center text-xs text-slate-500">
@@ -199,8 +192,25 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </div>
 
       {/* Click outside to close dropdowns */}
-      {(quickActionsOpen || facilityOpen) && (
-        <div className="fixed inset-0 z-[90]" onClick={() => { setQuickActionsOpen(false); setFacilityOpen(false); }} />
+      {quickActionsOpen && (
+        <div className="fixed inset-0 z-[90]" onClick={() => setQuickActionsOpen(false)} />
+      )}
+
+      {/* Facility dropdown - rendered as fixed overlay */}
+      {facilityOpen && (
+        <>
+          <div className="fixed inset-0 z-[9998]" onClick={() => setFacilityOpen(false)} />
+          <div
+            className="fixed w-60 bg-slate-800 border border-slate-600 rounded-lg shadow-2xl z-[9999] py-1"
+            style={facilityBtnRect ? { top: facilityBtnRect.bottom + 4, right: window.innerWidth - facilityBtnRect.right } : { top: 56, right: 200 }}
+          >
+            {facilityOptions.map((f) => (
+              <button key={f} onClick={() => { setFacility(f); setFacilityOpen(false); }} className={`w-full text-left px-3 py-2 text-sm transition-colors ${currentFacility === f ? 'text-sky-400 bg-sky-400/10' : 'text-slate-300 hover:bg-slate-700/50'}`}>
+                {f}
+              </button>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

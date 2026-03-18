@@ -35,29 +35,29 @@ export default function FinancePage() {
           <h1 className="text-xl font-bold text-white">Finance & Reconciliation</h1>
           <p className="text-sm text-slate-400">Daily summary · March 17, 2026</p>
         </div>
-        <button className="flex items-center gap-1.5 bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+        <button className="flex items-center gap-1.5 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
           <Download className="w-4 h-4" /> Export Report
         </button>
       </div>
 
       {/* Summary Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <DollarSign className="w-5 h-5 text-green-400 mb-2" />
           <p className="text-2xl font-bold text-white">$8,247</p>
           <p className="text-xs text-slate-400">Total Revenue</p>
         </div>
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <CreditCard className="w-5 h-5 text-sky-400 mb-2" />
           <p className="text-2xl font-bold text-white">287</p>
           <p className="text-xs text-slate-400">Transactions</p>
         </div>
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <TrendingUp className="w-5 h-5 text-emerald-400 mb-2" />
           <p className="text-2xl font-bold text-white">$28.73</p>
           <p className="text-xs text-slate-400">Avg Transaction</p>
         </div>
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <AlertTriangle className="w-5 h-5 text-amber-400 mb-2" />
           <p className="text-2xl font-bold text-amber-400">$51.00</p>
           <p className="text-xs text-slate-400">Refunds/Voids</p>
@@ -66,7 +66,7 @@ export default function FinancePage() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-4">Facility Revenue Rollup</h3>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -81,7 +81,7 @@ export default function FinancePage() {
           </div>
         </div>
 
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-4">Payment Method Breakdown</h3>
           <div className="h-64 flex items-center">
             <ResponsiveContainer width="100%" height="100%">
@@ -108,7 +108,7 @@ export default function FinancePage() {
       </div>
 
       {/* Reconciliation Table */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+      <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
         <h3 className="text-sm font-semibold text-slate-300 mb-3">Reconciliation by Terminal</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -146,7 +146,7 @@ export default function FinancePage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Refund/Void Log */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-3">Refund & Void Log</h3>
           <div className="space-y-2">
             {refundLog.map((r) => (
@@ -163,7 +163,7 @@ export default function FinancePage() {
         </div>
 
         {/* End-of-Day Checklist */}
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+        <div className="bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4">
           <h3 className="text-sm font-semibold text-slate-300 mb-3">End-of-Day Reconciliation Checklist</h3>
           <div className="space-y-2">
             {reconciliationChecklist.map((item) => (
