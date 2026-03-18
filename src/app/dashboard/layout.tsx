@@ -42,7 +42,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [facilityOpen, setFacilityOpen] = useState(false);
   const [now, setNow] = useState(new Date());
   const [facilityBtnRect, setFacilityBtnRect] = useState<DOMRect | null>(null);
+  const [quickActionsBtnRect, setQuickActionsBtnRect] = useState<DOMRect | null>(null);
   const facilityBtnRef = useRef<HTMLButtonElement>(null);
+  const quickActionsBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!user) router.push('/login');
@@ -163,21 +165,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </button>
 
           {/* Quick Actions */}
-          <div className="relative">
-            <button onClick={() => setQuickActionsOpen(!quickActionsOpen)} className="flex items-center gap-1.5 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white text-sm font-medium px-3 py-1.5 rounded-lg transition-all">
+          <div>
+            <button ref={quickActionsBtnRef} onClick={() => { setQuickActionsOpen(!quickActionsOpen); if (quickActionsBtnRef.current) setQuickActionsBtnRect(quickActionsBtnRef.current.getBoundingClientRect()); }} className="flex items-center gap-1.5 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white text-sm font-medium px-3 py-1.5 rounded-lg transition-all">
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">Quick Actions</span>
             </button>
-            {quickActionsOpen && (
-              <div className="absolute top-full mt-1 right-0 w-56 bg-slate-800 border border-slate-600 rounded-lg shadow-2xl z-[100] py-1 ring-1 ring-black/20">
-                {quickActions.map((a) => (
-                  <button key={a.label} onClick={() => setQuickActionsOpen(false)} className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/50 hover:text-white transition">
-                    <a.icon className="w-4 h-4 text-slate-400" />
-                    {a.label}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
         </header>
 
@@ -191,9 +183,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </main>
       </div>
 
-      {/* Click outside to close dropdowns */}
+      {/* Quick Actions dropdown - rendered as fixed overlay */}
       {quickActionsOpen && (
-        <div className="fixed inset-0 z-[90]" onClick={() => setQuickActionsOpen(false)} />
+        <>
+          <div className="fixed inset-0 z-[9998]" onClick={() => setQuickActionsOpen(false)} />
+          <div
+            className="fixed w-56 bg-slate-800 border border-slate-600 rounded-lg shadow-2xl z-[9999] py-1"
+            style={quickActionsBtnRect ? { top: quickActionsBtnRect.bottom + 4, right: window.innerWidth - quickActionsBtnRect.right } : { top: 56, right: 16 }}
+          >
+            {quickActions.map((a) => (
+              <button key={a.label} onClick={() => setQuickActionsOpen(false)} className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-300 hover:bg-slate-700/50 hover:text-white transition">
+                <a.icon className="w-4 h-4 text-slate-400" />
+                {a.label}
+              </button>
+            ))}
+          </div>
+        </>
       )}
 
       {/* Facility dropdown - rendered as fixed overlay */}

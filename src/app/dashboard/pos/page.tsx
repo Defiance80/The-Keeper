@@ -46,7 +46,7 @@ export default function POSPage() {
   const total = subtotal - discountAmount + tax;
 
   return (
-    <div className="animate-fade-in flex flex-col h-[calc(100vh-8rem)]">
+    <div className="animate-fade-in flex flex-col lg:h-[calc(100vh-8rem)]">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 flex-shrink-0">
         <div>
@@ -64,7 +64,7 @@ export default function POSPage() {
       </div>
 
       {/* Three-Panel Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 flex-1 min-h-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 flex-1 min-h-0 space-y-4 lg:space-y-0">
 
         {/* LEFT PANEL — Product Browsing */}
         <div className="lg:col-span-4 bg-gradient-to-br from-slate-800/80 to-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-xl flex flex-col overflow-hidden">
@@ -81,9 +81,9 @@ export default function POSPage() {
             </div>
 
             {/* Category tabs */}
-            <div className="flex gap-1 flex-wrap">
+            <div className="flex gap-1 flex-nowrap overflow-x-auto scrollbar-hide sm:flex-wrap">
               {categories.map((c) => (
-                <button key={c} onClick={() => setCategory(c)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${category === c ? 'bg-sky-400/10 text-sky-400 border border-sky-400/30' : 'bg-slate-900/30 text-slate-400 hover:text-white border border-slate-700/30'}`}>
+                <button key={c} onClick={() => setCategory(c)} className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap flex-shrink-0 ${category === c ? 'bg-sky-400/10 text-sky-400 border border-sky-400/30' : 'bg-slate-900/30 text-slate-400 hover:text-white border border-slate-700/30'}`}>
                   {c}
                 </button>
               ))}
@@ -162,7 +162,7 @@ export default function POSPage() {
               <span className="text-xs text-slate-400">% discount</span>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="flex justify-between text-sm"><span className="text-slate-400">Subtotal</span><span className="text-white">${subtotal.toFixed(2)}</span></div>
               {discount > 0 && <div className="flex justify-between text-sm"><span className="text-green-400">Discount ({discount}%)</span><span className="text-green-400">-${discountAmount.toFixed(2)}</span></div>}
               <div className="flex justify-between text-sm"><span className="text-slate-400">Tax (7%)</span><span className="text-white">${tax.toFixed(2)}</span></div>
@@ -228,7 +228,7 @@ export default function POSPage() {
               <div className="flex-1" />
 
               {/* Complete Sale */}
-              <button className="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white font-semibold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20">
+              <button className="w-full bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-white font-semibold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 min-h-[48px]">
                 <CreditCard className="w-4 h-4" />
                 Complete Sale — ${total.toFixed(2)}
               </button>
@@ -239,8 +239,8 @@ export default function POSPage() {
 
       {/* Device Status Strip — full width bottom */}
       <div className="mt-4 flex-shrink-0 bg-gradient-to-r from-slate-800/60 to-slate-800/40 border border-slate-700/50 rounded-xl px-4 py-2.5">
-        <div className="flex items-center gap-6 flex-wrap">
-          <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Devices</span>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex items-center gap-x-6 gap-y-2 lg:flex-wrap">
+          <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider col-span-2 sm:col-span-3 lg:col-span-1">Devices</span>
           {devices.map((d) => (
             <div key={d.name} className="flex items-center gap-1.5 text-xs">
               <CheckCircle2 className="w-3 h-3 text-green-400" />
